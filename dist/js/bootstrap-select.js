@@ -1,7 +1,7 @@
 /*!
  * Bootstrap-select v1.12.4 (http://silviomoreto.github.io/bootstrap-select)
  *
- * Copyright 2013-2017 bootstrap-select
+ * Copyright 2013-2020 bootstrap-select
  * Licensed under MIT (https://github.com/silviomoreto/bootstrap-select/blob/master/LICENSE)
  */
 
@@ -418,7 +418,7 @@
 
       if (typeof id !== 'undefined') {
         this.$button.attr('data-id', id);
-        $('label[for="' + id + '"]').click(function (e) {
+        $('label[for="' + id + '"]').on("click", function (e) {
           e.preventDefault();
           that.$button.focus();
         });
@@ -1219,7 +1219,7 @@
         }
       }
 
-      this.$button.click(function () {
+      this.$button.on("click", function () {
         return !that.isDisabled();
       });
     },
@@ -1402,7 +1402,7 @@
       });
 
       this.$menu.on('click', '.popover-title .close', function () {
-        that.$button.click();
+        that.$button.trigger("click");
       });
 
       this.$searchbox.on('click', function (e) {
@@ -1653,7 +1653,7 @@
         if (/(^9$|27)/.test(e.keyCode.toString(10)) && isActive) {
           e.preventDefault();
           e.stopPropagation();
-          that.$menuInner.click();
+          that.$menuInner.trigger("click");
           that.$button.focus();
         }
       }
@@ -1724,7 +1724,7 @@
         if (!/(32)/.test(e.keyCode.toString(10))) e.preventDefault();
         if (!that.options.liveSearch) {
           var elem = $(':focus');
-          elem.click();
+          elem.trigger("click");
           // Bring back focus for multiselects
           elem.focus();
           // Prevent screen from scrolling if the user hit the spacebar
@@ -1732,7 +1732,7 @@
           // Fixes spacebar selection of dropdown items in FF & IE
           $(document).data('spaceSelect', true);
         } else if (!/(32)/.test(e.keyCode.toString(10))) {
-          that.$menuInner.find('.active a').click();
+          that.$menuInner.find('.active a').trigger("click");
           $this.focus();
         }
         $(document).data('keycount', 0);

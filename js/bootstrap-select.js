@@ -1379,7 +1379,7 @@
       });
 
       this.$menu.on('click', '.popover-title .close', function () {
-        that.$button.click();
+        that.$button.trigger("click");
       });
 
       this.$searchbox.on('click', function (e) {
@@ -1630,7 +1630,7 @@
         if (/(^9$|27)/.test(e.keyCode.toString(10)) && isActive) {
           e.preventDefault();
           e.stopPropagation();
-          that.$menuInner.click();
+          that.$menuInner.trigger("click");
           that.$button.focus();
         }
       }
@@ -1701,7 +1701,7 @@
         if (!/(32)/.test(e.keyCode.toString(10))) e.preventDefault();
         if (!that.options.liveSearch) {
           var elem = $(':focus');
-          elem.click();
+          elem.trigger("click");
           // Bring back focus for multiselects
           elem.focus();
           // Prevent screen from scrolling if the user hit the spacebar
@@ -1709,7 +1709,7 @@
           // Fixes spacebar selection of dropdown items in FF & IE
           $(document).data('spaceSelect', true);
         } else if (!/(32)/.test(e.keyCode.toString(10))) {
-          that.$menuInner.find('.active a').click();
+          that.$menuInner.find('.active a').trigger("click");
           $this.focus();
         }
         $(document).data('keycount', 0);
