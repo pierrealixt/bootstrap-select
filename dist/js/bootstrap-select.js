@@ -823,7 +823,7 @@
       }
 
       //strip all HTML tags and trim the result, then unescape any escaped tags
-      this.$button.attr('title', htmlUnescape($.trim(title.replace(/<[^>]*>?/g, ''))));
+      this.$button.attr('title', htmlUnescape(title.replace(/<[^>]*>?/g, '').trim()));
       this.$button.children('.filter-option').html(title);
 
       this.$element.trigger('rendered.bs.select');
@@ -1426,7 +1426,7 @@
         }
       });
 
-      this.$element.change(function () {
+      this.$element.on("change", function () {
         that.render(false);
         that.$element.trigger('changed.bs.select', changed_arguments);
         changed_arguments = null;
@@ -1697,7 +1697,7 @@
 
         $items = that.$lis.filter(selector);
         $items.each(function (i) {
-          if ($.trim($(this).children('a').text().toLowerCase()).substring(0, 1) == keyCodeMap[e.keyCode]) {
+          if ($(this).children('a').text().toLowerCase().trim().substring(0, 1) == keyCodeMap[e.keyCode]) {
             keyIndex.push(i);
           }
         });
