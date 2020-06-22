@@ -395,7 +395,7 @@
 
       if (typeof id !== 'undefined') {
         this.$button.attr('data-id', id);
-        $('label[for="' + id + '"]').click(function (e) {
+        $('label[for="' + id + '"]').on("click", function (e) {
           e.preventDefault();
           that.$button.focus();
         });
@@ -1196,7 +1196,7 @@
         }
       }
 
-      this.$button.click(function () {
+      this.$button.on("click", function () {
         return !that.isDisabled();
       });
     },
