@@ -1403,7 +1403,7 @@
         }
       });
 
-      this.$element.change(function () {
+      this.$element.on("change", function () {
         that.render(false);
         that.$element.trigger('changed.bs.select', changed_arguments);
         changed_arguments = null;
